@@ -25,7 +25,7 @@ func main() {
 	countChars := *charPtr && !noFlagSet
 	lines, words, bytes, chars, err := CountAll(filePath, countLines, countWords, countBytes, countChars)
 	if err != nil {
-		fmt.Printf("wcc: error: %v\n", err)
+		fmt.Printf("ccwc: error: %v\n", err)
 		os.Exit(1)
 	}
 
@@ -59,7 +59,7 @@ func CountAll(filePath string, countLines, countWords, countBytes, countChars bo
 	} else {
 		file, err := os.Open(filePath)
 		if err != nil {
-			return 0, 0, 0, 0, fmt.Errorf("wcc: failed to open file: %v", err)
+			return 0, 0, 0, 0, fmt.Errorf("ccwc: failed to open file: %v", err)
 		}
 		defer file.Close()
 		reader = file
@@ -74,7 +74,7 @@ func CountAll(filePath string, countLines, countWords, countBytes, countChars bo
 			if err == io.EOF {
 				break
 			}
-			return 0, 0, 0, 0, fmt.Errorf("wcc: failed to read: %v", err)
+			return 0, 0, 0, 0, fmt.Errorf("ccwc: failed to read: %v", err)
 		}
 
 		if countBytes {
